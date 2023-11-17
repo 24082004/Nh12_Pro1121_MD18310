@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.n12_pro1121_md18310.R;
+import com.example.nh12_pro1121_md18310.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
