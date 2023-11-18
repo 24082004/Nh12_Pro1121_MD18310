@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_suaSp"
+        android:layout_marginTop="100dp"
+        android:padding="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sửa sản phẩm"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingVertical="3dp"/>
+    <EditText
+        android:id="@+id/edt_suamaSp"
+        android:layout_marginHorizontal="12dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:textIsSelectable="false"
+        android:contextClickable="false"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:hint="Mã sản phẩm: "
+        android:background="@drawable/backgraoundtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edt_suamalSp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:hint="Mã loại sản phẩm:"
+        android:background="@drawable/backgraoundtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edt_suatenSp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:hint="Tên sản phẩm:"
+        android:background="@drawable/backgraoundtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edt_suadgSp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:hint="Đơn giá:"
+        android:background="@drawable/backgraoundtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_marginTop="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_suasaveSp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#00B9D8"
+            android:text="Thêm"/>
+        <Button
+            android:id="@+id/btn_suacanelSp"
+            android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#474747"
+            android:layout_weight="1"
+            android:text="Hủy"/>
+    </LinearLayout>
+</LinearLayout>
