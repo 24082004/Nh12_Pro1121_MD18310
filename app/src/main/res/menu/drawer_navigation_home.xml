@@ -27,7 +27,7 @@
             android:id="@+id/statistical">
             <menu>
                 <item
-                    android:id="@+id/revenue"
+                    android:id="@+id/menuDoanhThu"
                     android:icon="@drawable/money"
                     android:title="Thống kê doanh thu"/>
             </menu>

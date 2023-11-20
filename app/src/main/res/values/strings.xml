@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Nh12_Pro1121_MD18310</string>
+    <string name="open"></string>
+    <string name="close"></string>
 </resources>

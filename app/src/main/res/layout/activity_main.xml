@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layoutMain"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -17,12 +18,12 @@
             app:titleTextColor="@color/white"
             android:background="#006EF1"/>
         <FrameLayout
-            android:id="@+id/framelayout_home"
+            android:id="@+id/framelayout_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView_home"
+        android:id="@+id/navigationView_main"
         android:background="@color/white"
         app:itemIconTint="@color/white"
         android:layout_width="wrap_content"
