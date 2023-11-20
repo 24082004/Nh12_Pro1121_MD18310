@@ -8,10 +8,8 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     static final String dbName = "QLBHNT";
-    static final int dbVersion = -2;
-    public DbHelper(Context context) {
-        super(context, dbName, null, dbVersion);
-    }
+    static final int dbVersion = 2;
+    public DbHelper(Context context) {super(context, dbName, null, dbVersion);}
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -19,12 +17,13 @@ public class DbHelper extends SQLiteOpenHelper {
         String createTableAdmin =
                 "Create table admin (" +
                         "tK TEXT PRIMARY KEY, " +
-                        "mK TEXT)";
+                        "hoTenAd TEXT NOT NULL, " +
+                        "mK TEXT NOT NULL)";
         db.execSQL(createTableAdmin);
         //Bảng nhân viên
         String createTableNhanVien =
                 "Create table nhanVien (" +
-                        "maNv INTEGER PRIMARY KEY, " +
+                        "maNv INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "hoTenNv TEXT NOT NULL, " +
                         "namSinhNv INTEGER NOT NULL, " +
                         "sdtNv INTEGER NOT NULL, " +
@@ -58,11 +57,11 @@ public class DbHelper extends SQLiteOpenHelper {
         String createTableLoaiSanPham =
                 "Create table loaiSanPham (" +
                         "maLoai INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "tenLoai TEXT)";
+                        "tenLoai TEXT NOT NULL)";
         db.execSQL(createTableLoaiSanPham);
 
         String add_admin = "INSERT INTO admin VALUES" +
-                "('admin','admin004')";
+                "('admin','loi','admin004')";
         db.execSQL(add_admin);
 
         String add_nhanvien = "INSERT INTO nhanVien VALUES" +

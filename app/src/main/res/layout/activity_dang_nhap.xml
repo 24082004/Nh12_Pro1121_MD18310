@@ -19,6 +19,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/w_username"
             android:layout_marginTop="10dp"
             android:background="@drawable/ng">
             <EditText
@@ -27,12 +28,14 @@
                 android:layout_width="380dp"
                 android:hint="Tài khoản"
                 android:textSize="30sp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/w_password"
             android:layout_marginTop="20dp"
             android:background="@drawable/ng">
         <EditText
@@ -40,15 +43,28 @@
             android:layout_width="380dp"
             android:hint="Mật khẩu"
             android:textSize="30sp"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"/>
+
         </com.google.android.material.textfield.TextInputLayout>
+        <CheckBox
+            android:checked="true"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:button="@drawable/cus_checkbox"
+            android:id="@+id/chk_rememberAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ghi nhớ tài khoản"
+            android:layout_gravity="left"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="10dp"/>
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
-
             <Button
                 android:id="@+id/btn_dn"
                 android:layout_width="wrap_content"
