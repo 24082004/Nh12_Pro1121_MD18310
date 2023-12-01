@@ -65,7 +65,7 @@ public class DangNhapActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }else{
-                        Toast.makeText(DangNhapActivity.this, "Tài khoản hoặc mạt khẩu không chính xác!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DangNhapActivity.this, "Tài khoản hoặc mật khẩu không chính xác!", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -29,7 +29,7 @@ public class AdminDao {
 
     public long update(Admin obj) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("hT", obj.getHoTenAd());
+        contentValues.put("hoTenAd", obj.getHoTenAd());
         contentValues.put("mK",obj.getmK());
 
         return db.update("admin",contentValues,"tK = ?",new String[]{String.valueOf(obj.gettK())});

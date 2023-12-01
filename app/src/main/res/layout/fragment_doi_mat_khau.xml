@@ -3,7 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="12dp"
     tools:context=".Fragment.FragmentDoiMatKhau">
 
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_marginTop="48dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/logo1"/>
+        <EditText
+            android:inputType="textPassword"
+            android:id="@+id/edt_oldPassword"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:hint="Mật khẩu cũ:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <EditText
+            android:inputType="textPassword"
+            android:id="@+id/edt_newPassword"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:hint="Mật khẩu mới:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <EditText
+            android:inputType="textPassword"
+            android:id="@+id/edt_enterthePassword"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:hint="Nhập lại mật khẩu:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_saveDkm"
+                android:textStyle="bold"
+                android:layout_marginRight="3dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#00B9D8"
+                android:text="Xác nhận"/>
+
+            <Button
+                android:id="@+id/btn_cancelDkm"
+                android:textStyle="bold"
+                android:layout_marginLeft="3dp"
+                android:backgroundTint="#474747"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hủy"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

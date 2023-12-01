@@ -42,14 +42,17 @@ public class DbHelper extends SQLiteOpenHelper {
                 "Create table hoaDon (" +
                         "maHd INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "tenSanPham TEXT NOT NULL, " +
+                        "maKh INTEGER NOT NULL, " +
                         "soLuong INTEGER NOT NULL, " +
                         "tongTien INTEGER NOT NULL, " +
+                        "ngay DATE NOT NULL, " +
                         "trangThaiTT TEXT NOT NULL)";
         db.execSQL(createTableHoaDon);
         //Bảng sản phẩm
         String createTableSanPham =
                 "Create table sanPham (" +
                         "maSP INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "maLoai INTEGER NOT NULL, " +
                         "tenSanPham TEXT NOT NULL, " +
                         "donGia INTEGER NOT NULL)";
         db.execSQL(createTableSanPham);
