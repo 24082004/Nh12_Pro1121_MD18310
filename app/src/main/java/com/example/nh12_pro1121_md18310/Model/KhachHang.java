@@ -16,6 +16,12 @@ public class KhachHang {
         this.sdtKhachHang = sdtKhachHang;
     }
 
+    public KhachHang(String hoTenKh, int namSinhKh, String sdtKhachHang) {
+        this.hoTenKh = hoTenKh;
+        this.namSinhKh = namSinhKh;
+        this.sdtKhachHang = sdtKhachHang;
+    }
+
     public int getMaKh() {
         return maKh;
     }

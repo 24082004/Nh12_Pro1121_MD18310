@@ -10,8 +10,16 @@ public class HoaDon {
     public HoaDon() {
     }
 
+
     public HoaDon(int maHoaDon, String tenSanPham, int soLuong, int tongTien, String trangThaiTT) {
         this.maHoaDon = maHoaDon;
+        this.tenSanPham = tenSanPham;
+        this.soLuong = soLuong;
+        this.tongTien = tongTien;
+        this.trangThaiTT = trangThaiTT;
+    }
+
+    public HoaDon(String tenSanPham, int soLuong, int tongTien, String trangThaiTT) {
         this.tenSanPham = tenSanPham;
         this.soLuong = soLuong;
         this.tongTien = tongTien;

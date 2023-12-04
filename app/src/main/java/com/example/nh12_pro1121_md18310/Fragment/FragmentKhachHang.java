@@ -1,65 +1,108 @@
 package com.example.nh12_pro1121_md18310.Fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nh12_pro1121_md18310.Adapter.KhachHangAdapter;
+import com.example.nh12_pro1121_md18310.Adapter.NhanVienAdapter;
+import com.example.nh12_pro1121_md18310.Dao.KhachHangDao;
+import com.example.nh12_pro1121_md18310.Dao.NhanVienDao;
+import com.example.nh12_pro1121_md18310.Model.KhachHang;
+import com.example.nh12_pro1121_md18310.Model.NhanVien;
 import com.example.nh12_pro1121_md18310.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentKhachHang#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class FragmentKhachHang extends Fragment {
+    private RecyclerView viewQlKh;
+    private FloatingActionButton fltadd;
+    private KhachHangDao khachHangDao;
+    private KhachHangAdapter khachHangAdapter;
+    KhachHang khachHang;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FragmentKhachHang() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentKhachHang.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentKhachHang newInstance(String param1, String param2) {
-        FragmentKhachHang fragment = new FragmentKhachHang();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private ArrayList<KhachHang> listKh = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_khach_hang, container, false);
+        View view = inflater.inflate(R.layout.fragment_khach_hang, container, false);
+        viewQlKh = view.findViewById(R.id.rcv_khachhang);
+        fltadd = view.findViewById(R.id.btn_addkh);
+
+        khachHangDao = new KhachHangDao(getContext());
+        ArrayList<KhachHang> listKh = khachHangDao.getDs();
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        viewQlKh.setLayoutManager(layoutManager);
+        KhachHangAdapter khachHangAdapter1 = new KhachHangAdapter(getContext(),listKh);
+        viewQlKh.setAdapter(khachHangAdapter1);
+
+        fltadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenDialogAdd();
+            }
+        });
+
+        return view;
+    }
+    public void OpenDialogAdd(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = ((Activity)getContext()).getLayoutInflater();
+        View view = inflater.inflate(R.layout.add_khachhang,null);
+        builder.setView(view);
+        Dialog dialog = builder.create();
+        dialog.show();
+        EditText edthoTenKh = view.findViewById(R.id.edt_themhtKh);
+        EditText edtnamSinhKh = view.findViewById(R.id.edt_themnsKh);
+        EditText edtsdtKh = view.findViewById(R.id.edt_themsdtKh);
+        Button btnthemsaveKh = view.findViewById(R.id.btn_themsaveKh);
+        btnthemsaveKh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String hTenKh = edthoTenKh.getText().toString();
+                String nSKh = edtnamSinhKh.getText().toString();
+                String sdtKh = edtsdtKh.getText().toString();
+
+
+                if (hTenKh.equals("")){
+                    Toast.makeText(getContext(), "Nhập họ tên", Toast.LENGTH_SHORT).show();
+                }else if (nSKh.equals("")){
+                    Toast.makeText(getContext(), "Nhập năm sinh", Toast.LENGTH_SHORT).show();
+                }else if (sdtKh.equals("")){
+                    Toast.makeText(getContext(), "Nhập số điện thoại", Toast.LENGTH_SHORT).show();
+                }else {
+                    khachHang = new KhachHang(hTenKh,Integer.parseInt(nSKh), sdtKh);
+                    if (khachHangDao.insert(khachHang)){
+                        listKh.clear();
+                        listKh.addAll(khachHangDao.getDs());
+                        dialog.dismiss();
+                        ArrayList<KhachHang> list1 = khachHangDao.getDs();
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        viewQlKh.setLayoutManager(layoutManager);
+                        khachHangAdapter = new KhachHangAdapter(getContext(), list1);
+                        viewQlKh.setAdapter(khachHangAdapter);
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_LONG).show();
+                    }else {
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+            }
+        });
     }
 }

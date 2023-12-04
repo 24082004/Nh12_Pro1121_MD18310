@@ -18,6 +18,13 @@ public class NhanVien {
         this.emailNv = emailNv;
     }
 
+    public NhanVien(String hoTenNv, int namSinhNv, String sdtNv, String emailNv) {
+        this.hoTenNv = hoTenNv;
+        this.namSinhNv = namSinhNv;
+        this.sdtNv = sdtNv;
+        this.emailNv = emailNv;
+    }
+
     public int getMaNv() {
         return maNv;
     }
@@ -54,7 +61,7 @@ public class NhanVien {
         return emailNv;
     }
 
-    public void setEmail(String emailNv) {
+    public void setEmailNv(String emailNv) {
         this.emailNv = emailNv;
     }
 }

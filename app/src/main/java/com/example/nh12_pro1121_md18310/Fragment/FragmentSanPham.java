@@ -1,65 +1,104 @@
 package com.example.nh12_pro1121_md18310.Fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nh12_pro1121_md18310.Adapter.NhanVienAdapter;
+import com.example.nh12_pro1121_md18310.Adapter.SanPhamAdapter;
+import com.example.nh12_pro1121_md18310.Dao.NhanVienDao;
+import com.example.nh12_pro1121_md18310.Dao.SanPhamDao;
+import com.example.nh12_pro1121_md18310.Model.NhanVien;
+import com.example.nh12_pro1121_md18310.Model.SanPham;
 import com.example.nh12_pro1121_md18310.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentSanPham#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class FragmentSanPham extends Fragment {
+    private RecyclerView viewQlSp;
+    private FloatingActionButton fltadd;
+    private SanPhamDao sanPhamDao;
+    private SanPhamAdapter sanPhamAdapter;
+    SanPham sanPham;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FragmentSanPham() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentSanPham.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentSanPham newInstance(String param1, String param2) {
-        FragmentSanPham fragment = new FragmentSanPham();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private ArrayList<SanPham> listSP = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_san_pham, container, false);
+        View view = inflater.inflate(R.layout.fragment_san_pham, container, false);
+        viewQlSp = view.findViewById(R.id.rcv_sanpham);
+        fltadd = view.findViewById(R.id.btn_addsp);
+        sanPhamDao = new SanPhamDao(getContext());
+        ArrayList<SanPham> listSp = sanPhamDao.getDs();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        viewQlSp.setLayoutManager(layoutManager);
+        SanPhamAdapter sanPhamAdapter1 = new SanPhamAdapter(getContext(),listSp);
+        viewQlSp.setAdapter(sanPhamAdapter1);
+
+        fltadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenDialogAdd();
+            }
+        });
+
+        return view;
+    }
+    public void OpenDialogAdd(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = ((Activity)getContext()).getLayoutInflater();
+        View view = inflater.inflate(R.layout.add_sanpham,null);
+        builder.setView(view);
+        Dialog dialog = builder.create();
+        dialog.show();
+        EditText edtthemlLsp = view.findViewById(R.id.edt_themlLsp);
+        EditText edtthemtenSp = view.findViewById(R.id.edt_themtenSp);
+        EditText edtthemdgSp = view.findViewById(R.id.edt_themdgSp);
+        Button btnthemsaveSp = view.findViewById(R.id.btn_themsaveSp);
+        btnthemsaveSp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String lLsp = edtthemlLsp.getText().toString();
+                String tenSp = edtthemtenSp.getText().toString();
+                String dgSp = edtthemdgSp.getText().toString();
+
+                if (lLsp.equals("")){
+                    Toast.makeText(getContext(), "Nhập mã loại", Toast.LENGTH_SHORT).show();
+                }else if (tenSp.equals("")){
+                    Toast.makeText(getContext(), "Nhập tên sản phẩm", Toast.LENGTH_SHORT).show();
+                }else if (dgSp.equals("")){
+                    Toast.makeText(getContext(), "Nhập đơn giá", Toast.LENGTH_SHORT).show();
+                }else {
+                    sanPham = new SanPham(Integer.parseInt(lLsp),tenSp, Integer.parseInt(dgSp));
+                    if(sanPhamDao.insert(sanPham)){
+                        listSP.clear();
+                        listSP.addAll(sanPhamDao.getDs());
+                        dialog.dismiss();
+                        ArrayList<SanPham> listS = sanPhamDao.getDs();
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        viewQlSp.setLayoutManager(layoutManager);
+                        SanPhamAdapter sanPhamAdapter1 = new SanPhamAdapter(getContext(),listS);
+                        viewQlSp.setAdapter(sanPhamAdapter1);
+                        Toast.makeText(getContext(),"Thêm thành công ",Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(getContext(),"Thêm thất bại",Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            }
+        });
     }
 }

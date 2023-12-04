@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <TextView
         android:id="@+id/tv_thSp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
         android:padding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edt_themmalSp"
+        android:id="@+id/edt_themlLsp"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="24dp"
         android:padding="12dp"
