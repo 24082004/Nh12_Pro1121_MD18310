@@ -30,11 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edt_themlLsp"
+        android:id="@+id/edt_themtenlLsp"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="24dp"
         android:padding="12dp"
-        android:hint="Mã loại sản phẩm:"
+        android:hint="Tên loại sản phẩm:"
         android:background="@drawable/backgraoundtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

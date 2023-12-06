@@ -51,7 +51,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHord
 
     @Override
     public void onBindViewHolder(@NonNull SanPhamAdapter.ViewHorder holder, int position) {
-        holder.txt_loai.setText(listSp.get(position).getMaLoaisp()+"");
+        holder.txt_loai.setText(listSp.get(position).getTenlLoaisp());
         holder.txt_tenSp.setText(String.valueOf(listSp.get(position).getTenSanPham()));
         holder.txt_donGiaSp.setText(String.valueOf(listSp.get(position).getDonGia())+" VNĐ ");
         SanPham sanPham = listSp.get(position);
@@ -120,18 +120,18 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHord
         builder.setView(view);
         Dialog dialog = builder.create();
         dialog.show();
-        EditText edtsuamalSp = view.findViewById(R.id.edt_suamalSp);
+        EditText edtsuatenllSp = view.findViewById(R.id.edt_suatenllSp);
         EditText edtsuatenSp = view.findViewById(R.id.edt_suatenSp);
         EditText edtsuadgSp = view.findViewById(R.id.edt_suadgSp);
         Button btneditForm = view.findViewById(R.id.btn_suasaveSp);
 
-        edtsuamalSp.setText(sp.getMaLoaisp()+"");
+        edtsuatenllSp.setText(sp.getTenlLoaisp()+"");
         edtsuatenSp.setText(sp.getTenSanPham());
         edtsuadgSp.setText(sp.getDonGia()+"");
         btneditForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sp.setMaLoaiSp(Integer.parseInt(edtsuamalSp.getText().toString()));
+                sp.setTenlLoaisp(edtsuatenllSp.getText().toString());
                 sp.setTenSanPham(edtsuatenSp.getText().toString());
                 sp.setDonGia(Integer.parseInt(edtsuadgSp.getText().toString()));
                 if (sanPhamDao.update(sp)) {

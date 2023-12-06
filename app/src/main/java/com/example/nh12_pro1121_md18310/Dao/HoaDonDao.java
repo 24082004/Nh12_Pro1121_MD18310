@@ -28,8 +28,8 @@ public class HoaDonDao {
                     HoaDon hd = new HoaDon();
                     hd.setMaHoaDon(cursor.getInt(cursor.getColumnIndexOrThrow("maHd")));
                     hd.setTenSanPham(cursor.getString(cursor.getColumnIndexOrThrow("tenSanPham")));
-                    hd.setSoLuong(cursor.getInt(cursor.getColumnIndexOrThrow("tongtien")));
-                    hd.setTongTien(cursor.getInt(cursor.getColumnIndexOrThrow("soLuong")));
+                    hd.setSoLuong(cursor.getInt(cursor.getColumnIndexOrThrow("soLuong")));
+                    hd.setTongTien(cursor.getInt(cursor.getColumnIndexOrThrow("tongtien")));
                     hd.setTrangThaiTT(cursor.getString(cursor.getColumnIndexOrThrow("trangThaiTT")));
                     list.add(hd);
                     cursor.moveToNext();
@@ -46,8 +46,8 @@ public class HoaDonDao {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("tenSanPham", hd.getTenSanPham());
-        values.put("tongtien", hd.getTongTien());
-        values.put("soLuong", hd.getSoLuong());
+        values.put("soLuong", hd.getTongTien());
+        values.put("tongtien", hd.getSoLuong());
         values.put("trangThaiTT", hd.getTrangThaiTT());
         long row = db.insert("hoaDon", null, values);
         return (row > 0);
@@ -57,8 +57,8 @@ public class HoaDonDao {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values1 = new ContentValues();
         values1.put("tenSanPham", hd.getTenSanPham());
-        values1.put("tongtien", hd.getTongTien());
-        values1.put("soLuong", hd.getSoLuong());
+        values1.put("soLuong", hd.getTongTien());
+        values1.put("tongtien", hd.getSoLuong());
         values1.put("trangThaiTT", hd.getTrangThaiTT());
         long row = db.update("hoaDon", values1, "maHd=?",
                 new String[]{String.valueOf(hd.getMaHoaDon())});

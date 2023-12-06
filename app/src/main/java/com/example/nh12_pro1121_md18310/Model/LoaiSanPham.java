@@ -12,6 +12,10 @@ public class LoaiSanPham {
         this.tenLoai = tenLoai;
     }
 
+    public LoaiSanPham(String tenLoai) {
+        this.tenLoai = tenLoai;
+    }
+
     public int getMaLoai() {
         return maLoai;
     }

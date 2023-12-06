@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <TextView
         android:id="@+id/tv_suaSp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
         android:padding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,11 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edt_suamalSp"
+        android:id="@+id/edt_suatenllSp"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="24dp"
         android:padding="12dp"
-        android:hint="Mã loại sản phẩm:"
+        android:hint="Tên loại sản phẩm:"
         android:background="@drawable/backgraoundtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

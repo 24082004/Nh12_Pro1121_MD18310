@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
-    static final String dbName = "QLBHNT2";
+    static final String dbName = "QLBHNT1";
     static final int dbVersion = 1;
     public DbHelper(Context context) {super(context, dbName, null, dbVersion);}
 
@@ -42,15 +42,15 @@ public class DbHelper extends SQLiteOpenHelper {
                 "Create table hoaDon (" +
                         "maHd INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "tenSanPham TEXT NOT NULL, " +
-                        "tongtien INTEGER NOT NULL, " +
                         "soLuong INTEGER NOT NULL, " +
+                        "tongtien INTEGER NOT NULL, " +
                         "trangThaiTT TEXT NOT NULL)";
         db.execSQL(createTableHoaDon);
         //Bảng sản phẩm
         String createTableSanPham =
                 "Create table sanPham (" +
                         "maSP INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "malLoai INTEGER NOT NULL, " +
+                        "tenlLoai TEXT NOT NULL, " +
                         "tenSanPham TEXT NOT NULL, " +
                         "donGia INTEGER NOT NULL)";
         db.execSQL(createTableSanPham);
@@ -78,9 +78,9 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(add_khachhang);
 
         String add_sanpham = "INSERT INTO sanPham VALUES" +
-                "(0,3,'Bàn ghỗ',1200000)," +
-                "(1,4,'Ghế gỗ',100000)," +
-                "(2,5,'Tủ ghỗ',2000000)";
+                "(0,'Bàn','Bàn ghỗ',1200000)," +
+                "(1,'Ghế','Ghế gỗ',100000)," +
+                "(2,'Tủ','Tủ ghỗ',2000000)";
         db.execSQL(add_sanpham);
 
         String add_loaisanpham = "INSERT INTO loaiSanPham VALUES" +

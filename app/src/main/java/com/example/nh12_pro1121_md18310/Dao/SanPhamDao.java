@@ -27,7 +27,7 @@ public class SanPhamDao {
                 while (!cursor.isAfterLast()) {
                     SanPham sp = new SanPham();
                     sp.setMaSanPham(cursor.getInt(cursor.getColumnIndexOrThrow("maSP")));
-                    sp.setMaLoaiSp(cursor.getInt(cursor.getColumnIndexOrThrow("malLoai")));
+                    sp.setTenlLoaisp(cursor.getString(cursor.getColumnIndexOrThrow("tenlLoai")));
                     sp.setTenSanPham(cursor.getString(cursor.getColumnIndexOrThrow("tenSanPham")));
                     sp.setDonGia(cursor.getInt(cursor.getColumnIndexOrThrow("donGia")));
                     list.add(sp);
@@ -44,7 +44,7 @@ public class SanPhamDao {
     public boolean insert(SanPham sp) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("malLoai", sp.getMaLoaisp());
+        values.put("tenlLoai", sp.getTenlLoaisp());
         values.put("tenSanPham", sp.getTenSanPham());
         values.put("donGia", sp.getDonGia());
         long row = db.insert("sanPham", null, values);
@@ -54,7 +54,7 @@ public class SanPhamDao {
     public boolean update(SanPham sp) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values1 = new ContentValues();
-        values1.put("malLoai", sp.getMaLoaisp());
+        values1.put("tenlLoai", sp.getTenlLoaisp());
         values1.put("tenSanPham", sp.getTenSanPham());
         values1.put("donGia", sp.getDonGia());
         long row = db.update("sanPham", values1, "maSP=?",

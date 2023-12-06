@@ -69,9 +69,9 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHorder
                             listHd.clear();
                             listHd.addAll(hoaDonDao.getDshd());
                             notifyDataSetChanged();
-                            Toast.makeText(context,"Delete Success",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Xoá thành công",Toast.LENGTH_LONG).show();
                         }else {
-                            Toast.makeText(context,"Delete fail",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Xóa thất bại",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -143,9 +143,9 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHorder
                     listHd.addAll(hoaDonDao.getDshd());
                     notifyDataSetChanged();
                     dialog.dismiss();
-                    Toast.makeText(context, "Thêm thành công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sửa thành công", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_LONG).show();
                 }
             }
         });

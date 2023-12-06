@@ -2,25 +2,27 @@ package com.example.nh12_pro1121_md18310.Model;
 
 public class SanPham {
     private int maSanPham;
-    private int maLoaisp;
+    private String tenlLoaisp;
     private String tenSanPham;
     private int donGia;
 
     public SanPham() {
     }
 
-    public SanPham(int maSanPham, int maLoaisp, String tenSanPham, int donGia) {
+
+    public SanPham(int maSanPham, String tenlLoaisp, String tenSanPham, int donGia) {
         this.maSanPham = maSanPham;
-        this.maLoaisp = maLoaisp;
+        this.tenlLoaisp = tenlLoaisp;
         this.tenSanPham = tenSanPham;
         this.donGia = donGia;
     }
 
-    public SanPham(int maLoai, String tenSanPham, int donGia) {
-        this.maLoaisp = maLoai;
+    public SanPham(String tenLoaisp, String tenSanPham, int donGia) {
+        this.tenlLoaisp = tenLoaisp;
         this.tenSanPham = tenSanPham;
         this.donGia = donGia;
     }
+
 
     public int getMaSanPham() {
         return maSanPham;
@@ -30,12 +32,12 @@ public class SanPham {
         this.maSanPham = maSanPham;
     }
 
-    public int getMaLoaisp() {
-        return maLoaisp;
+    public String getTenlLoaisp() {
+        return tenlLoaisp;
     }
 
-    public void setMaLoaiSp(int maLoaisp) {
-        this.maLoaisp = maLoaisp;
+    public void setTenlLoaisp(String tenlLoaisp) {
+        this.tenlLoaisp = tenlLoaisp;
     }
 
     public String getTenSanPham() {

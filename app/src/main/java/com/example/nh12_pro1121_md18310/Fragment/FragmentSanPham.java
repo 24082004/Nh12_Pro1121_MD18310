@@ -64,25 +64,25 @@ public class FragmentSanPham extends Fragment {
         builder.setView(view);
         Dialog dialog = builder.create();
         dialog.show();
-        EditText edtthemlLsp = view.findViewById(R.id.edt_themlLsp);
+        EditText edtthemtenlLoaiSp = view.findViewById(R.id.edt_themtenlLsp);
         EditText edtthemtenSp = view.findViewById(R.id.edt_themtenSp);
         EditText edtthemdgSp = view.findViewById(R.id.edt_themdgSp);
         Button btnthemsaveSp = view.findViewById(R.id.btn_themsaveSp);
         btnthemsaveSp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String lLsp = edtthemlLsp.getText().toString();
+                String tenLsp = edtthemtenlLoaiSp.getText().toString();
                 String tenSp = edtthemtenSp.getText().toString();
                 String dgSp = edtthemdgSp.getText().toString();
 
-                if (lLsp.equals("")){
-                    Toast.makeText(getContext(), "Nhập mã loại", Toast.LENGTH_SHORT).show();
+                if (tenLsp.equals("")){
+                    Toast.makeText(getContext(), "Nhập Tên loại", Toast.LENGTH_SHORT).show();
                 }else if (tenSp.equals("")){
                     Toast.makeText(getContext(), "Nhập tên sản phẩm", Toast.LENGTH_SHORT).show();
                 }else if (dgSp.equals("")){
                     Toast.makeText(getContext(), "Nhập đơn giá", Toast.LENGTH_SHORT).show();
                 }else {
-                    sanPham = new SanPham(Integer.parseInt(lLsp),tenSp, Integer.parseInt(dgSp));
+                    sanPham = new SanPham(tenLsp,tenSp, Integer.parseInt(dgSp));
                     if(sanPhamDao.insert(sanPham)){
                         listSP.clear();
                         listSP.addAll(sanPhamDao.getDs());
