@@ -29,12 +29,10 @@
         android:background="@drawable/backgraoundtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <EditText
+    <Spinner
         android:id="@+id/edt_suatenspHd"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="24dp"
-        android:padding="12dp"
-        android:hint="Tên sản phẩm:"
         android:background="@drawable/backgraoundtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

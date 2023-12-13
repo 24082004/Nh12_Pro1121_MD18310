@@ -51,9 +51,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHord
 
     @Override
     public void onBindViewHolder(@NonNull SanPhamAdapter.ViewHorder holder, int position) {
-        holder.txt_loai.setText(listSp.get(position).getTenlLoaisp());
-        holder.txt_tenSp.setText(String.valueOf(listSp.get(position).getTenSanPham()));
-        holder.txt_donGiaSp.setText(String.valueOf(listSp.get(position).getDonGia())+" VNĐ ");
+        holder.txt_loai.setText("Tên loại: "+listSp.get(position).getTenlLoaisp());
+        holder.txt_tenSp.setText("Tên sản phẩm: "+String.valueOf(listSp.get(position).getTenSanPham()));
+        holder.txt_donGiaSp.setText("Đơn giá: "+String.valueOf(listSp.get(position).getDonGia())+" VNĐ ");
         SanPham sanPham = listSp.get(position);
         holder.btn_deleteSp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")

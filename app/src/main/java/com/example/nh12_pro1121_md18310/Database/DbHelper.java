@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
-    static final String dbName = "QLBHNT1";
+    static final String dbName = "QLBHNtDA11";
     static final int dbVersion = 1;
     public DbHelper(Context context) {super(context, dbName, null, dbVersion);}
 
@@ -41,7 +41,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String createTableHoaDon =
                 "Create table hoaDon (" +
                         "maHd INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "tenSanPham TEXT NOT NULL, " +
+                        "maSP INTEGER NOT NULL, " +
                         "soLuong INTEGER NOT NULL, " +
                         "tongtien INTEGER NOT NULL, " +
                         "trangThaiTT TEXT NOT NULL)";

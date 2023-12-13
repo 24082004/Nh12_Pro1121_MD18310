@@ -45,8 +45,8 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHorder holder, int position) {
-        holder.txt_tenNv.setText(listNv.get(position).getHoTenNv());
-        holder.txt_namSinhNv.setText(String.valueOf(listNv.get(position).getNamSinhNv()));
+        holder.txt_tenNv.setText("Họ và tên: "+listNv.get(position).getHoTenNv());
+        holder.txt_namSinhNv.setText("Năm sinh: "+String.valueOf(listNv.get(position).getNamSinhNv()));
         holder.txt_sdtNv.setText(" Số điện thoại: "+String.valueOf(listNv.get(position).getSdtNv()));
         holder.txt_emailNv.setText(" Email: "+String.valueOf(listNv.get(position).getEmailNv()));
         NhanVien nhanVien = listNv.get(position);

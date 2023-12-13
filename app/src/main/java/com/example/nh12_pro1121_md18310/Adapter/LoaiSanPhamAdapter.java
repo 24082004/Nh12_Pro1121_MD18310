@@ -48,7 +48,7 @@ public class LoaiSanPhamAdapter extends RecyclerView.Adapter<LoaiSanPhamAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull LoaiSanPhamAdapter.ViewHorder holder, int position) {
-        holder.txt_tenLoai.setText(listlSp.get(position).getTenLoai());
+        holder.txt_tenLoai.setText("Tên loại: "+listlSp.get(position).getTenLoai());
         LoaiSanPham loaiSanPham = listlSp.get(position);
         holder.btn_deleteLsp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")

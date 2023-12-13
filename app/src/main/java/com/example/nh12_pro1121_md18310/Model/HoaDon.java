@@ -2,7 +2,7 @@ package com.example.nh12_pro1121_md18310.Model;
 
 public class HoaDon {
     private int maHoaDon;
-    private String tenSanPham;
+    private int maSp;
     private int soLuong;
     private int tongTien;
     private String trangThaiTT;
@@ -10,17 +10,15 @@ public class HoaDon {
     public HoaDon() {
     }
 
-
-    public HoaDon(int maHoaDon, String tenSanPham, int soLuong, int tongTien, String trangThaiTT) {
+    public HoaDon(int maHoaDon, int maSp, int soLuong, int tongTien, String trangThaiTT) {
         this.maHoaDon = maHoaDon;
-        this.tenSanPham = tenSanPham;
+        this.maSp = maSp;
         this.soLuong = soLuong;
         this.tongTien = tongTien;
         this.trangThaiTT = trangThaiTT;
     }
 
-    public HoaDon(String tenSanPham, int soLuong, int tongTien, String trangThaiTT) {
-        this.tenSanPham = tenSanPham;
+    public HoaDon(int soLuong, int tongTien, String trangThaiTT) {
         this.soLuong = soLuong;
         this.tongTien = tongTien;
         this.trangThaiTT = trangThaiTT;
@@ -34,12 +32,12 @@ public class HoaDon {
         this.maHoaDon = maHoaDon;
     }
 
-    public String getTenSanPham() {
-        return tenSanPham;
+    public int getMaSp() {
+        return maSp;
     }
 
-    public void setTenSanPham(String tenSanPham) {
-        this.tenSanPham = tenSanPham;
+    public void setMaSp(int maSp) {
+        this.maSp = maSp;
     }
 
     public int getSoLuong() {

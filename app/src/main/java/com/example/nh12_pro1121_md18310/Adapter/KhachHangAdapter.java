@@ -45,8 +45,8 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull KhachHangAdapter.ViewHorder holder, int position) {
-        holder.txt_tenKh.setText(listKh.get(position).getHoTenKh());
-        holder.txt_namSinhKh.setText(String.valueOf(listKh.get(position).getNamSinhKh()));
+        holder.txt_tenKh.setText("Họ và tên: "+listKh.get(position).getHoTenKh());
+        holder.txt_namSinhKh.setText("Năm sinh: "+String.valueOf(listKh.get(position).getNamSinhKh()));
         holder.txt_sdtKh.setText(" Số điện thoại: "+String.valueOf(listKh.get(position).getSdtKhachHang()));
         KhachHang khachHang = listKh.get(position);
         holder.btn_deleteKh.setOnClickListener(new View.OnClickListener() {

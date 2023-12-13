@@ -15,6 +15,7 @@ import java.util.List;
 
 public class SanPhamDao {
     DbHelper dbHelper;
+    private SQLiteDatabase db;
     public SanPhamDao(Context context){
         dbHelper = new DbHelper(context);
     }
@@ -69,6 +70,24 @@ public class SanPhamDao {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         long row = db.delete("sanPham", "maSP=?", new String[]{String.valueOf(sp.getMaSanPham())});
         return (row > 0);
+    }
+    private List<SanPham> getData(String sql, String ... selectionArgs) {
+        List<SanPham> lstSach = new ArrayList<>();
+        Cursor cursor = db.rawQuery(sql,selectionArgs);
+        while (cursor.moveToNext()) {
+            lstSach.add(new SanPham(
+                    Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    Integer.parseInt(cursor.getString(3))
+            ));
+        }
+        return lstSach;
+    }
+    public SanPham getID (String id) {
+        String sql = "SELECT * FROM Sach WHERE maSach = ?";
+        List<SanPham> lstTT = getData(sql,id);
+        return lstTT.get(0);
     }
 
 }

@@ -9,9 +9,11 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,11 +35,16 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHorder
     private Context context;
     private ArrayList<HoaDon> listHd;
     HoaDonDao hoaDonDao;
-
+    SanPhamDao sanPhamDao;
+    SanPhamSpinnerAdapter sanPhamSpinnerAdapter;
+    ArrayList<SanPham> lst;
+    int maSp = 0, dongia;
     public HoaDonAdapter(Context context, ArrayList<HoaDon> list) {
         this.context = context;
         this.listHd = list;
         hoaDonDao = new HoaDonDao(context);
+        sanPhamDao = new SanPhamDao(context);
+        lst = sanPhamDao.getDs();
     }
 
     @NonNull
@@ -50,10 +57,14 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHorder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHorder holder, int position) {
-        holder.txttenspHd.setText(listHd.get(position).getTenSanPham());
-        holder.txtsoLhuongHd.setText(String.valueOf(listHd.get(position).getSoLuong()));
-        holder.txttongtienHd.setText(String.valueOf(listHd.get(position).getTongTien()));
-        holder.txttrangthaiHd.setText(String.valueOf(listHd.get(position).getTrangThaiTT()));
+        HoaDon hoaDon = listHd.get(position);
+        sanPhamDao = new SanPhamDao(context);
+        SanPham sp = sanPhamDao.getDs().get(Integer.parseInt(String.valueOf(hoaDon.getMaSp())));
+
+        holder.txttenspHd.setText("Tên san phẩm: " + sp.getTenSanPham());
+        holder.txtsoLhuongHd.setText("Số lượng: "+String.valueOf(listHd.get(position).getSoLuong()));
+        holder.txttongtienHd.setText("Tổng tiền: "+String.valueOf(listHd.get(position).getTongTien()));
+        holder.txttrangthaiHd.setText("Trạng thái thanh toán: "+String.valueOf(listHd.get(position).getTrangThaiTT()));
         HoaDon hd = listHd.get(position);
         holder.btndeleteHd.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -85,7 +96,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHorder
                 dialog.show();
             }
         });
-        holder.btndeleteHd.setOnClickListener(new View.OnClickListener() {
+        holder.btnupdateHd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openDialogUpdate(hd);
@@ -121,20 +132,17 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHorder
         builder.setView(view);
         Dialog dialog = builder.create();
         dialog.show();
-        EditText edtupthd = view.findViewById(R.id.edt_suatenspHd);
+        Spinner edtthemtenspHd = view.findViewById(R.id.edt_suatenspHd);
         EditText edtupslhd = view.findViewById(R.id.edt_suasoluongHd);
         EditText edtuptothd = view.findViewById(R.id.edt_suatongtienHd);
         EditText edtuptthd = view.findViewById(R.id.edt_suatrangthaiHd);
         Button btneditForm = view.findViewById(R.id.btn_suasaveHd);
-
-        edtupthd.setText(hd.getTenSanPham());
         edtupslhd.setText(hd.getSoLuong()+"");
         edtuptothd.setText(hd.getTongTien()+"");
         edtuptthd.setText(hd.getTrangThaiTT());
         btneditForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hd.setTenSanPham(edtupthd.getText().toString());
                 hd.setSoLuong(Integer.parseInt(edtupslhd.getText().toString()));
                 hd.setTongTien(Integer.parseInt(edtuptothd.getText().toString()));
                 hd.setTrangThaiTT(edtuptthd.getText().toString());
@@ -148,6 +156,18 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHorder
                     Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_LONG).show();
                 }
             }
+        });
+        sanPhamSpinnerAdapter = new SanPhamSpinnerAdapter(context,R.layout.item_view_spinner,lst);
+        edtthemtenspHd.setAdapter(sanPhamSpinnerAdapter);
+        edtthemtenspHd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                maSp = lst.get(position).getMaSanPham();
+                dongia = lst.get(position).getDonGia();
+                hd.setMaSp(maSp);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 }
